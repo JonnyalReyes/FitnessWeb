@@ -33,7 +33,7 @@ $teamMembers = [
         "name" => "David González",
         "role" => "DevOps Engineer",
         "description" => "Experto en automatización y despliegue continuo",
-        "image" => "./src/images/FitLife_Logo.png"
+        "image" => "./src/images/David_Gonzales.jpg"
     ]
 ];
 ?>

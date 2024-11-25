@@ -1,7 +1,8 @@
 <?php
 require_once './includes/functions.php';
 require_once './includes/database.php';
-require_once './js/notifications.js';
+
+header('Content-Type: application/json');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = sanitizeInput($_POST['username']);
@@ -25,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         $error = "Usuario no encontrado";
-        echo "<script>showNotification('Inicio de sesión exitoso', 'success');</script>";
+        echo "'Inicio de sesión exitoso', 'success'";
     }
 
     if (isset($error)) {
@@ -36,11 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        echo "<script>showNotification('Inicio de sesión exitoso', 'success');</script>";
+        echo "'Inicio de sesión exitoso', 'success'";
         header("Location: index.php?page=home");
         exit();
     } else {
-        echo "<script>showNotification('Error al iniciar sesión. Verifica tus credenciales.', 'error');</script>";
+        echo "'Error al iniciar sesión. Verifica tus credenciales.', 'error'";
     }
 
 }

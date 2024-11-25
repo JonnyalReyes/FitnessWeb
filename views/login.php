@@ -1,6 +1,13 @@
 
+
 <div class="container">
     <h2>Iniciar sesión</h2>
+    <?php if (isset($_SESSION['error'])) : ?>
+        <div class="error-message   ">
+        <?php echo $_SESSION['error']; ?>
+        </div>
+     <?php endif; ?>
+     <br>
     <form   action="login_process" method="POST">
         <div class="form-group">
             <label for="username">Usuario:</label>
@@ -15,32 +22,10 @@
     <p>¿No tienes una cuenta? <a href="registro">Regístrate aquí</a></p>
 </div>
 
-<script src="js/notifications.js"></script>
-<script>
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault(); 
+<?php
 
-    const formData = new FormData(this);
-
-    fetch(this.action, 
- { 
-        method: this.method, 
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            showNotification(data.message, 
-            'success');
-            setTimeout(function() {
-            }, 4000);
-        } else {
-            showNotification(data.message, 'error');
-        }
-    })
-    .catch(error => { 
-        console.error('Error:', error);
-        showNotification('Error al iniciar sesión', 'error'); 
-    });
-});
-</script>
+if (isset($_SESSION['error'])) {
+  echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';
+  unset($_SESSION['error']);
+}
+?>

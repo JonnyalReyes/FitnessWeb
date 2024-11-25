@@ -149,11 +149,20 @@ $pending_diets = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php
             if (isAdmin()) { 
                 echo '<div class="dashboard-section">';
-                echo '<h2>Funciones de Administrador</h2>';
+                echo '<h2>Administrar Contenido</h2>';
                 echo '<div class="admin-options">';
+                echo '<a href="manage_content" class="btn btn-admin">☆ Gestionar Rutinas y Dietas</a>';
                 echo '<a href="add_routine" class="btn btn-admin">☆ Añadir nueva rutina</a>';
                 echo '<a href="add_diet" class="btn btn-admin">☆ Añadir nueva dieta</a>';
-                echo '<a href="manage_content" class="btn btn-admin">☆ Gestionar Rutinas y Dietas</a>';
+                echo '</div>';
+                echo '</div>';
+
+                echo '<div class="dashboard-section">';
+                echo '<h2>Administrar Usuarios</h2>';
+                echo '<div class="admin-options">';
+                echo '<a href="manage_users" class="btn btn-admin">☆ Gestionar Usuarios</a>';
+                echo '<a href="add_user" class="btn btn-admin">☆ Añadir Usuario</a>';
+                echo '<a href="add_admin" class="btn btn-admin">☆ Añadir Administrador</a>';
                 echo '</div>';
                 echo '</div>';
             }

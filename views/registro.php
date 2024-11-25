@@ -8,6 +8,12 @@ if (isLoggedIn()) {
 
 <div class="container">
     <h2>Registro</h2>
+    <?php if (isset($_SESSION['error'])) : ?>
+        <div class="error-message   ">
+        <?php echo $_SESSION['error']; ?>
+        </div>
+     <?php endif; ?>
+     <br>
     <form action="registro_process" method="POST" class="form-register2" id="registerForm">
         <div class="form-group">
             <label for="username">Nombre de usuario:</label>
@@ -30,3 +36,10 @@ if (isLoggedIn()) {
     <p>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión aquí</a></p>
 </div>
 
+<?php
+
+if (isset($_SESSION['error'])) {
+  echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';
+  unset($_SESSION['error']);
+}
+?>

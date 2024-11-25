@@ -12,6 +12,11 @@ redirectIfNotAdmin()
             </svg>
         </a>
         <h1>Agregar Nueva Dieta</h1>
+        <?php if (isset($_SESSION['error'])) : ?>
+            <div class="error-message   ">
+            <?php echo $_SESSION['error']; ?>
+            </div>
+         <?php endif; ?>
         <form action="add_diet_process" method="POST">
             <div class="form-group">
                 <label for="name">Nombre de la Dieta:</label>
@@ -46,34 +51,3 @@ redirectIfNotAdmin()
             <button type="submit" class="btn btn-primary">Agregar Dieta</button>
         </form>
     </div>
-
-   <script src="js/notifications.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('addRoutineForm');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-
-            fetch('api/add_routine.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showNotification(data.message, 'success');
-                    form.reset();
-                } else {
-                    showNotification(data.message, 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showNotification('Error al agregar la rutina', 'error');
-            });
-        });
-    });
-    </script>
-
-</body>
